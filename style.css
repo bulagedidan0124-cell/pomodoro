@@ -1,0 +1,216 @@
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #4ecdc4;
+    --bg-color: #f7f7f7;
+    --text-color: #2d3436;
+    --white: #ffffff;
+    --shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Default background (fallback) */
+    background-color: #f7f7f7;
+    background-image: url('https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh; /* Mobile viewport fix */
+    margin: 0;
+    transition: background-image 0.5s ease-in-out;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+body.work-mode {
+    /* Forest / Green / Calm */
+    background-image: url('https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+}
+
+body.break-mode {
+    /* Beach / Blue / Relax */
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.65); /* More transparent for better background visibility */
+    backdrop-filter: blur(25px); /* Strong blur */
+    -webkit-backdrop-filter: blur(25px);
+    padding: 2.5rem 2rem;
+    border-radius: 35px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    text-align: center;
+    width: 90%; /* Responsive width */
+    max-width: 400px;
+    max-height: 85dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #636e72;
+    margin-bottom: 0.5rem;
+}
+
+.status {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.break-mode .status {
+    color: var(--secondary-color);
+}
+
+/* Timer Ring Styles */
+.timer-container {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: 0 auto 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.progress-ring__circle {
+    stroke-dasharray: 753.98; /* 2 * PI * r (r=120) */
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.35s;
+    stroke-linecap: round;
+    stroke: var(--primary-color);
+}
+
+.break-mode .progress-ring__circle {
+    stroke: var(--secondary-color);
+}
+
+.timer-display {
+    position: absolute;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--text-color);
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 50px; /* Capsule shape */
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.secondary {
+    background-color: #dfe6e9;
+    color: #636e72;
+}
+
+.break-mode .primary {
+    background-color: var(--secondary-color);
+}
+
+.message {
+    font-size: 0.85rem;
+    color: #b2bec3;
+    line-height: 1.5;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 480px) {
+    .container {
+        /* On mobile, keep it as a floating card but slightly larger */
+        width: 88%;
+        padding: 2rem 1.5rem;
+        border-radius: 30px;
+        /* Ensure it doesn't touch edges */
+        margin: auto; 
+        max-height: 90dvh;
+        /* Keep glass effect */
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .timer-container {
+        width: 240px;
+        height: 240px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .progress-ring {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .progress-ring__circle, .progress-ring__circle-bg {
+        r: 110;
+        cx: 120;
+        cy: 120;
+    }
+    
+    .progress-ring__circle {
+        stroke-dasharray: 691.15; /* 2 * PI * 110 */
+    }
+
+    .timer-display {
+        font-size: 3.2rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .status {
+        margin-bottom: 1rem;
+    }
+}

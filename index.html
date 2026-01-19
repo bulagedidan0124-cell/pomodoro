@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>番茄钟 - 站立提醒</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b6b">
+    <link rel="apple-touch-icon" href="icon.png">
+</head>
+<body>
+    <div class="container">
+        <h1>番茄钟</h1>
+        <div class="status" id="status-text">准备专注</div>
+        
+        <div class="timer-container">
+            <svg class="progress-ring" width="260" height="260">
+                <circle class="progress-ring__circle-bg" stroke="#eee" stroke-width="8" fill="transparent" r="120" cx="130" cy="130"/>
+                <circle class="progress-ring__circle" stroke="var(--primary-color)" stroke-width="8" fill="transparent" r="120" cx="130" cy="130"/>
+            </svg>
+            <div class="timer-display" id="timer">25:00</div>
+        </div>
+        
+        <div class="controls">
+            <button id="start-btn" class="btn primary">开始</button>
+            <button id="pause-btn" class="btn secondary" disabled>暂停</button>
+            <button id="reset-btn" class="btn">重置</button>
+        </div>
+
+        <div class="message" id="message">
+            每工作 25 分钟，提醒站立休息 5 分钟
+        </div>
+    </div>
+    <audio id="alarm-sound" src="https://assets.mixkit.co/active_storage/sfx/1110/1110-preview.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('Service Worker registered'))
+            .catch(err => console.log('Service Worker registration failed: ', err));
+        });
+      }
+    </script>
+</body>
+</html>
