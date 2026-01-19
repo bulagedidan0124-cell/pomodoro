@@ -169,48 +169,67 @@ h1 {
 /* Mobile Optimizations */
 @media (max-width: 480px) {
     .container {
-        /* On mobile, keep it as a floating card but slightly larger */
-        width: 88%;
-        padding: 2rem 1.5rem;
-        border-radius: 30px;
-        /* Ensure it doesn't touch edges */
+        /* Reduce width to show more background */
+        width: 82%; 
+        padding: 1.5rem 1.2rem; /* Reduce padding */
+        border-radius: 40px; /* More rounded */
+        /* Center vertically but consider browser UI bars */
         margin: auto; 
-        max-height: 90dvh;
+        max-height: 80dvh; /* Limit height */
         /* Keep glass effect */
-        background-color: rgba(255, 255, 255, 0.6);
+        background-color: rgba(255, 255, 255, 0.65);
     }
 
     .timer-container {
-        width: 240px;
-        height: 240px;
-        margin-bottom: 1.5rem;
+        /* Slightly smaller ring */
+        width: 220px;
+        height: 220px;
+        margin-bottom: 1.2rem;
     }
     
     .progress-ring {
-        width: 240px;
-        height: 240px;
+        width: 220px;
+        height: 220px;
     }
     
     .progress-ring__circle, .progress-ring__circle-bg {
-        r: 110;
-        cx: 120;
-        cy: 120;
+        r: 100;
+        cx: 110;
+        cy: 110;
     }
     
     .progress-ring__circle {
-        stroke-dasharray: 691.15; /* 2 * PI * 110 */
+        stroke-dasharray: 628.32; /* 2 * PI * 100 */
     }
 
     .timer-display {
-        font-size: 3.2rem;
+        font-size: 3rem; /* Slightly smaller font */
     }
     
     h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         margin-bottom: 0.2rem;
     }
     
     .status {
-        margin-bottom: 1rem;
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+    }
+    
+    .message {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: #7f8c8d; /* Darker grey for better visibility */
+        font-weight: 500;
+    }
+    
+    .controls {
+        gap: 12px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .btn {
+        padding: 10px;
+        font-size: 0.95rem;
     }
 }
